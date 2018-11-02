@@ -23,7 +23,18 @@ const defaultState = [
 class Application extends Component {
   state = {
     // Set the initial state,
+      items: defaultState,
   };
+
+    addItem =(value)=>{
+   this.setState((prevState)=>{
+       console.log([...prevState.items,value]);
+       return {
+           items: [...prevState.items,value]
+       }
+   })
+ };
+
 
   // How are we going to manipulate the state?
   // Ideally, users are going to want to add, remove,
@@ -31,13 +42,15 @@ class Application extends Component {
 
   render() {
     // Get the items from state
-
+    const {items}=this.state;
+      const packedItems = items.filter(row=>row.packed===true);
+      const unpackeditems= items.filter(row=>row.packed===false);
     return (
       <div className="Application">
-        <NewItem />
+        <NewItem  onSubmit={this.addItem}/>
         <CountDown />
-        <Items title="Unpacked Items" items={[]} />
-        <Items title="Packed Items" items={[]} />
+        <Items title="Unpacked Items" items={unpackeditems} />
+        <Items title="Packed Items" items={packedItems} />
         <button className="button full-width">Mark All As Unpacked</button>
       </div>
     );
