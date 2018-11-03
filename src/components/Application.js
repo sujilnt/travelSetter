@@ -34,6 +34,13 @@ class Application extends Component {
        }
    })
  };
+    removepackaedItems= (value)=>{
+      const {items} =this.state;
+    const filterValue = items.filter((row)=>row.id !== value.id);
+    this.setState({
+        items:filterValue
+    });
+  };
 
 
   // How are we going to manipulate the state?
@@ -49,8 +56,8 @@ class Application extends Component {
       <div className="Application">
         <NewItem  onSubmit={this.addItem}/>
         <CountDown />
-        <Items title="Unpacked Items" items={unpackeditems} />
-        <Items title="Packed Items" items={packedItems} />
+        <Items title="Unpacked Items" items={unpackeditems} removepackaedItems={this.removepackaedItems}/>
+        <Items title="Packed Items" items={packedItems} removepackaedItems={this.removepackaedItems}/>
         <button className="button full-width">Mark All As Unpacked</button>
       </div>
     );

@@ -8,7 +8,9 @@ class NewItem extends Component {
 
   handleChange = event => {
     // Do something when the state of this input changes.
-      console.log(event, event.target,event.target.value);
+      this.setState({
+          value: event.target.value
+      })
   };
 
   handleSubmit = event => {
@@ -16,7 +18,12 @@ class NewItem extends Component {
     const { value } = this.state;
 
     event.preventDefault();
-     onSubmit(value);
+    const finalValue = {
+        value,
+        id: uniqueId(),
+        packed:false
+    };
+     onSubmit(finalValue);
     // Do something when a new value is submitted.
 
     // Reset the state of the component.

@@ -8,9 +8,8 @@ class Items extends Component {
   };
 
   updateSearchTerm = searchTerm => {};
-
   render() {
-    const { title, items } = this.props;
+    const { title, items,removepackaedItems } = this.props;
     return (
       <section className="Items">
         <h2>
@@ -26,7 +25,7 @@ class Items extends Component {
             <Item
               key={item.id}
               onCheckOff={() => {}}
-              onRemove={() => {}}
+              onRemove={removepackaedItems}
               item={item}
             />
           ))}

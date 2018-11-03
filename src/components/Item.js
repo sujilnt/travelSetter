@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './Item.css';
 
 class Item extends Component {
+
   render() {
-    const { item } = this.props;
+    const { item,onRemove } = this.props;
     return (
       <article className="Item">
         <label htmlFor={item.id}>
@@ -15,7 +16,7 @@ class Item extends Component {
           />
           {item.value}
         </label>
-        <button className="Item-remove" onClick={() => {}}>
+        <button className="Item-remove" onClick={()=>{onRemove(item)}}>
           Remove
         </button>
       </article>
