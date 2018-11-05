@@ -3,8 +3,12 @@ import uniqueId from 'lodash/uniqueId';
 import CountDown from './CountDown';
 import NewItem from './NewItem';
 import Items from './Items';
-
+import ButtonWrapper from "./ButtonWrapper";
 import './Application.css';
+const button = ()=><div><button>click me </button></div>;
+const WrappedComponent = ButtonWrapper(button);
+
+
 
 const defaultState = [
   { value: 'Pants', id: uniqueId(), packed: false },
@@ -83,6 +87,7 @@ toogle = (value)=>{
         <Items title="Unpacked Items" items={unpackeditems} onCheck={this.onCheck} removepackaedItems={this.removepackaedItems}/>
         <Items title="Packed Items" items={packedItems} onCheck={this.onCheck}  removepackaedItems={this.removepackaedItems}/>
         <button className="button full-width" onClick={this.allUnmarked}>Mark All As Unpacked</button>
+        <WrappedComponent />
       </div>
     );
   }
